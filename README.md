@@ -9,6 +9,11 @@ Welcome to MegFi, a Bitcoin DeFi application built on the Internet Computer Prot
 - **Loan Management**: Repay loans and track account positions
 - **Seamless Integration**: Built with Internet Identity for secure, decentralized authentication
 
+### User Interface
+
+![Login Screen](src/app_frontend/public/screenshots/login.png)
+_Secure authentication with Internet Identity_
+
 To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
 To learn more before you start working with MegFi, see the following documentation available online:
@@ -153,7 +158,7 @@ import { canister } from "mydec"; // using the alias defined in vite.config.js
 
 This is a DeFi lending/borrowing application built on the Internet Computer blockchain. Here's the structure:
 
-![Overview of the Codebase](public/mefioverview.png)
+![Overview of the Codebase](src/app_frontend/public/mefioverview.png)
 
 ### Technology Stack
 
@@ -168,6 +173,9 @@ This is a DeFi lending/borrowing application built on the Internet Computer bloc
 2. Lending/Borrowing: Users can deposit BTC as collateral and borrow USDC
 3. Token swaps: Integration with ICPSwap for ckBTC/ckUSDC conversions
 4. Wallet integration: Internet Identity authentication
+
+![Dashboard](src/app_frontend/public/screenshots/dashboard.png)
+_Main dashboard showing portfolio overview and asset management_
 
 ### Architecture
 
@@ -187,6 +195,9 @@ This is a DeFi lending/borrowing application built on the Internet Computer bloc
 - Extensive UI component library based on Radix UI
 - Custom hooks for actors, authentication, and mobile detection
 
+![Borrow Interface](src/app_frontend/public/screenshots/boorow.png)
+_Borrowing interface with collateral management and LTV controls_
+
 **Token Canisters**
 
 - Multiple ICRC-1 ledger canisters for different tokens (ckBTC, ckUSDC, ICP)
@@ -194,3 +205,35 @@ This is a DeFi lending/borrowing application built on the Internet Computer bloc
 - Internet Identity for authentication
 
 The app enables users to deposit Bitcoin, receive ckBTC, use it as collateral to borrow ckUSDC, and manage their lending positions through a modern web interface.
+
+## Screenshots
+
+### Asset Management
+
+![Asset View](src/app_frontend/public/screenshots/asset.png)
+_Detailed view of individual assets with deposit and withdrawal options_
+
+### Account Overview
+
+![Account Overview](src/app_frontend/public/screenshots/account.png)
+_Comprehensive account view showing positions, collateral, and borrowing status_
+
+### Team Introduction
+
+We are a dedicated team of two blockchain developers passionate about bringing Bitcoin DeFi to the Internet Computer ecosystem. CodeMicah and Kcpele
+
+### Motivation/Problem Statement
+
+Bitcoin holders want to access DeFi opportunities without selling their BTC, current cross-chain solutions are complex or centralized.
+
+### Solution Description
+
+leveraging ICP's chain-key technology for trustless BTC bridging, providing a simple interface for collateralized lending, enabling Bitcoin holders to maintain exposure while accessing liquidity,
+
+### Future Roadmap
+
+- Mobile app
+- Additional collateral types
+- More borrowing options
+- Yield strategies
+- Governance features

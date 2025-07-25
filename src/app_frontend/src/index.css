@@ -38,7 +38,7 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    
+
     /* Design system colors */
     --bg-primary: 0 0% 3.9%;
     --bg-secondary: 0 0% 10.2%;
@@ -55,7 +55,7 @@
     --semantic-negative: 0 84% 60%;
     --semantic-warning: 38 92% 50%;
   }
-  
+
   .dark {
     /* Dark theme (default) */
     --background: 0 0% 3.9%;
@@ -107,62 +107,62 @@
   .card-container {
     @apply bg-card rounded-3xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-white/[0.08];
   }
-  
+
   .card-mini {
     @apply bg-white/[0.05] rounded-2xl p-4 backdrop-blur-[10px];
   }
-  
+
   .card-accent-mint {
     @apply bg-accent-mint text-text-inverse;
   }
-  
+
   .card-accent-dark {
     @apply bg-background text-foreground;
   }
-  
+
   /* Button styles from design system */
   .btn-icon {
     @apply bg-white/10 rounded-xl w-12 h-12 flex items-center justify-center hover:bg-white/[0.15] transition-all;
   }
-  
+
   .btn-pill {
     @apply bg-white/[0.05] rounded-[20px] px-4 py-2 text-text-secondary text-sm;
   }
-  
+
   /* Typography from design system */
   .heading-xl {
     @apply text-5xl font-bold leading-tight;
   }
-  
+
   .heading-large {
     @apply text-[32px] font-semibold leading-tight;
   }
-  
+
   .heading-medium {
     @apply text-2xl font-semibold leading-tight;
   }
-  
+
   .heading-small {
     @apply text-lg font-medium leading-normal;
   }
-  
+
   .body-regular {
     @apply text-base font-normal leading-normal;
   }
-  
+
   .body-small {
     @apply text-sm font-normal leading-normal;
   }
-  
+
   .body-tiny {
     @apply text-xs font-normal leading-normal;
   }
-  
+
   /* Metric styles */
   .metric-positive {
     @apply text-semantic-positive bg-semantic-positive/10 rounded-lg px-2 py-1;
   }
-  
+
   .metric-negative {
     @apply text-semantic-negative bg-semantic-negative/10 rounded-lg px-2 py-1;
   }
