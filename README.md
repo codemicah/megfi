@@ -5,7 +5,7 @@ Welcome to MegFi, a Bitcoin DeFi application built on the Internet Computer Prot
 ## Features
 
 - **Bitcoin Bridging**: Convert Bitcoin to chain-key Bitcoin (ckBTC) on the ICP network
-- **DeFi Lending**: Use deposited ckBTC as collateral to borrow ckUSDC stablecoins  
+- **DeFi Lending**: Use deposited ckBTC as collateral to borrow ckUSDC stablecoins
 - **Loan Management**: Repay loans and track account positions
 - **Seamless Integration**: Built with Internet Identity for secure, decentralized authentication
 
@@ -26,11 +26,13 @@ dfx canister --help
 ```
 
 ## Install Rust (cargo)
+
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ## Install C compiler
+
 ```bash
 sudo apt update
 sudo apt install build-essential clang
@@ -89,6 +91,7 @@ If you are hosting frontend code somewhere without using DFX, you may need to ma
 Follow these steps to add a new canister to your project:
 
 1. Create a new directory in the `src` folder for your canister:
+
 ```bash
 mkdir src/my_canister
 ```
@@ -96,12 +99,13 @@ mkdir src/my_canister
 2. Add your canister files (e.g., main.mo for Motoko or lib.rs for Rust) to the new directory.
 
 3. Update `dfx.json` to include your new canister:
+
 ```json
 {
   "canisters": {
     "my_canister": {
-      "type": "motoko",  // or "rust" or "custom"
-      "main": "src/my_canister/main.mo",  // for Motoko
+      "type": "motoko", // or "rust" or "custom"
+      "main": "src/my_canister/main.mo" // for Motoko
       // For Rust canisters:
       // "type": "custom",
       // "candid": "src/my_canister/my_canister.did",
@@ -113,6 +117,7 @@ mkdir src/my_canister
 ```
 
 4. Add the declaration route in `vite.config.js`:
+
 ```javascript
 resolve: {
   alias: [
@@ -129,6 +134,7 @@ resolve: {
 ```
 
 5. Test your canister:
+
 ```bash
 # Deploy your canister
 dfx deploy my_canister
@@ -138,6 +144,53 @@ ls .dfx/local/canisters/my_canister/
 ```
 
 6. Import and use your canister in frontend components:
+
 ```javascript
-import { canister } from "mydec";  // using the alias defined in vite.config.js
+import { canister } from "mydec"; // using the alias defined in vite.config.js
 ```
+
+## Overview of the Codebase
+
+This is a DeFi lending/borrowing application built on the Internet Computer blockchain. Here's the structure:
+
+![Overview of the Codebase](public/mefioverview.png)
+
+### Technology Stack
+
+- Backend: Motoko (Internet Computer's native language)
+- Frontend: React + TypeScript + Vite
+- UI: Tailwind CSS + Radix UI components
+- Blockchain: DFINITY/Internet Computer Protocol (ICP)
+
+### Core Features
+
+1. Cross-chain asset support: ckBTC (chain-key Bitcoin), ckUSDC, ckETH, and ICP tokens
+2. Lending/Borrowing: Users can deposit BTC as collateral and borrow USDC
+3. Token swaps: Integration with ICPSwap for ckBTC/ckUSDC conversions
+4. Wallet integration: Internet Identity authentication
+
+### Architecture
+
+**Backend (src/app_backend/)**
+
+- main.mo: Core smart contract with functions for:
+  - BTC minting/withdrawal operations
+  - Token swaps via ICPSwap
+  - USDC transfers
+  - Collateralized borrowing
+
+**Frontend (src/app_frontend/)**
+
+- Modern React app with routing
+- Key pages: Home, Deposit BTC, Borrow USDC, Repay Loan, Account Overview
+- Components for lending dashboard, forms (borrow/supply/repay/withdraw), transaction history
+- Extensive UI component library based on Radix UI
+- Custom hooks for actors, authentication, and mobile detection
+
+**Token Canisters**
+
+- Multiple ICRC-1 ledger canisters for different tokens (ckBTC, ckUSDC, ICP)
+- Mock BTC minter for testing
+- Internet Identity for authentication
+
+The app enables users to deposit Bitcoin, receive ckBTC, use it as collateral to borrow ckUSDC, and manage their lending positions through a modern web interface.

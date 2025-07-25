@@ -1,0 +1,303 @@
+{
+  "designSystem": {
+    "colorPalette": {
+      "backgrounds": {
+        "primary": "#0A0A0A",
+        "secondary": "#1A1A1A",
+        "tertiary": "#2A2A2A",
+        "accent": {
+          "mint": "#A8D5BA",
+          "pink": "#FFB3BA",
+          "yellow": "#FFD93D",
+          "teal": "#6BCF7F"
+        }
+      },
+      "text": {
+        "primary": "#FFFFFF",
+        "secondary": "#B8B8B8",
+        "muted": "#808080",
+        "inverse": "#000000"
+      },
+      "semantic": {
+        "positive": "#4ADE80",
+        "negative": "#EF4444",
+        "warning": "#F59E0B"
+      }
+    },
+    "elementStyling": {
+      "cards": {
+        "container": {
+          "background": "#1A1A1A",
+          "borderRadius": "24px",
+          "padding": "24px",
+          "shadow": "0 8px 32px rgba(0, 0, 0, 0.4)",
+          "border": "1px solid rgba(255, 255, 255, 0.08)"
+        },
+        "miniCard": {
+          "background": "rgba(255, 255, 255, 0.05)",
+          "borderRadius": "16px",
+          "padding": "16px",
+          "backdropFilter": "blur(10px)"
+        },
+        "accentCard": {
+          "mint": {
+            "background": "#A8D5BA",
+            "text": "#000000"
+          },
+          "dark": {
+            "background": "#0A0A0A",
+            "text": "#FFFFFF"
+          }
+        },
+        "DO_NOT": [
+          "Apply card gradients to text elements",
+          "Use card shadows on inline elements",
+          "Apply container background to icon fills"
+        ]
+      },
+      "dataVisualization": {
+        "donutChart": {
+          "segments": {
+            "primary": "#6BCF7F",
+            "secondary": "#FFB3BA",
+            "tertiary": "#FFD93D"
+          },
+          "centerText": {
+            "value": {
+              "fontSize": "48px",
+              "fontWeight": "700",
+              "color": "#FFFFFF"
+            },
+            "label": {
+              "fontSize": "14px",
+              "color": "#808080"
+            }
+          },
+          "strokeWidth": "60px",
+          "gap": "4px"
+        },
+        "barChart": {
+          "bars": {
+            "default": "#4A4A4A",
+            "highlight": "#6BCF7F",
+            "accent": "#FFB3BA"
+          },
+          "axis": {
+            "color": "#2A2A2A",
+            "text": "#808080"
+          }
+        },
+        "lineChart": {
+          "line": {
+            "stroke": "#6BCF7F",
+            "strokeWidth": "2px"
+          },
+          "area": {
+            "fill": "rgba(107, 207, 127, 0.1)"
+          },
+          "grid": {
+            "color": "rgba(255, 255, 255, 0.05)"
+          }
+        }
+      },
+      "buttons": {
+        "icon": {
+          "background": "rgba(255, 255, 255, 0.1)",
+          "borderRadius": "12px",
+          "size": "48px",
+          "icon": {
+            "color": "#FFFFFF",
+            "size": "24px"
+          },
+          "hover": {
+            "background": "rgba(255, 255, 255, 0.15)"
+          }
+        },
+        "pill": {
+          "background": "rgba(255, 255, 255, 0.05)",
+          "borderRadius": "20px",
+          "padding": "8px 16px",
+          "text": {
+            "color": "#B8B8B8",
+            "fontSize": "14px"
+          }
+        },
+        "DO_NOT": [
+          "Apply button backgrounds to text",
+          "Use icon button styles on text buttons"
+        ]
+      },
+      "transactions": {
+        "listItem": {
+          "background": "transparent",
+          "padding": "12px 0",
+          "borderBottom": "1px solid rgba(255, 255, 255, 0.05)"
+        },
+        "avatar": {
+          "size": "40px",
+          "borderRadius": "50%",
+          "background": "rgba(255, 255, 255, 0.1)"
+        },
+        "amount": {
+          "positive": {
+            "color": "#4ADE80",
+            "prefix": "+"
+          },
+          "negative": {
+            "color": "#EF4444",
+            "prefix": "-"
+          }
+        },
+        "brandIcon": {
+          "youtube": {
+            "background": "#FF0000",
+            "icon": "#FFFFFF"
+          },
+          "spotify": {
+            "background": "#1DB954",
+            "icon": "#FFFFFF"
+          },
+          "default": {
+            "background": "rgba(255, 255, 255, 0.1)",
+            "icon": "#FFFFFF"
+          }
+        }
+      },
+      "navigation": {
+        "bottomBar": {
+          "background": "#0A0A0A",
+          "borderTop": "1px solid rgba(255, 255, 255, 0.08)",
+          "height": "80px",
+          "iconColor": "#808080",
+          "iconColorActive": "#FFFFFF"
+        }
+      },
+      "metrics": {
+        "percentageChange": {
+          "positive": {
+            "color": "#4ADE80",
+            "background": "rgba(74, 222, 128, 0.1)",
+            "borderRadius": "8px",
+            "padding": "4px 8px"
+          },
+          "negative": {
+            "color": "#EF4444",
+            "background": "rgba(239, 68, 68, 0.1)"
+          }
+        },
+        "largeNumber": {
+          "fontSize": "48px",
+          "fontWeight": "700",
+          "color": "#FFFFFF",
+          "prefix": {
+            "fontSize": "32px",
+            "opacity": "0.8"
+          }
+        }
+      }
+    },
+    "typography": {
+      "heading": {
+        "xl": {
+          "fontSize": "48px",
+          "fontWeight": "700",
+          "lineHeight": "1.1"
+        },
+        "large": {
+          "fontSize": "32px",
+          "fontWeight": "600",
+          "lineHeight": "1.2"
+        },
+        "medium": {
+          "fontSize": "24px",
+          "fontWeight": "600",
+          "lineHeight": "1.3"
+        },
+        "small": {
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "1.4"
+        }
+      },
+      "body": {
+        "regular": {
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "1.5"
+        },
+        "small": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "1.5"
+        },
+        "tiny": {
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "1.4"
+        }
+      }
+    },
+    "spacing": {
+      "unit": "8px",
+      "scale": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "xxl": "48px"
+      }
+    },
+    "effects": {
+      "shadow": {
+        "card": "0 8px 32px rgba(0, 0, 0, 0.4)",
+        "button": "0 2px 8px rgba(0, 0, 0, 0.2)",
+        "elevated": "0 16px 48px rgba(0, 0, 0, 0.6)"
+      },
+      "blur": {
+        "backdrop": "blur(10px)",
+        "overlay": "blur(20px)"
+      },
+      "transitions": {
+        "default": "all 0.2s ease",
+        "slow": "all 0.3s ease",
+        "fast": "all 0.15s ease"
+      }
+    },
+    "states": {
+      "hover": {
+        "opacity": "0.8",
+        "scale": "1.02",
+        "brightnessIncrease": "10%"
+      },
+      "active": {
+        "scale": "0.98",
+        "brightnessDecrease": "5%"
+      },
+      "disabled": {
+        "opacity": "0.4",
+        "cursor": "not-allowed"
+      }
+    },
+    "criticalRules": {
+      "DO_NOT": [
+        "Apply donut chart colors to UI elements",
+        "Use data visualization colors for interactive elements",
+        "Apply card shadows to text or inline elements",
+        "Mix accent card backgrounds with regular card styles",
+        "Use transaction amount colors for non-financial data",
+        "Apply blur effects to text content",
+        "Use navigation icon styles for action buttons",
+        "Apply metric backgrounds to regular text"
+      ],
+      "ALWAYS": [
+        "Maintain contrast ratio of 4.5:1 for text on backgrounds",
+        "Use semantic colors consistently for financial data",
+        "Apply shadows only to elevated containers",
+        "Keep icon sizes proportional to their containers",
+        "Use the correct text color for each background type",
+        "Apply border radius consistently within component types"
+      ]
+    }
+  }
+}
