@@ -20,11 +20,11 @@ export function Navigation() {
     location.pathname === path || location.pathname.startsWith(path + "/");
 
   const navItems = [
-    { path: "/", icon: LayoutDashboard, label: "Dashboard" },
+    { path: "/home", icon: LayoutDashboard, label: "Dashboard" },
     { path: "/asset", icon: ChartBar, label: "Assets" },
     { path: "/deposit-btc", icon: ArrowUpRight, label: "Deposit" },
     { path: "borrow", icon: CreditCard, label: "Borrow" },
-    { path: "/account-overview", icon: User, label: "Account" },
+    { path: "/account", icon: User, label: "Account" },
   ];
 
   return (

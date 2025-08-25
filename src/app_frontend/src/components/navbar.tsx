@@ -20,10 +20,35 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/auth-provider";
+import { useEffect, useState } from "react";
+import { useActors } from "@/hooks/useActors";
 
 export function Navbar() {
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, login, logout } = useAuth();
+  const { identity } = useAuth();
+  const { mainCanister } = useActors();
+  const [totalUsd, setTotalUsd] = useState<number | null>(null);
+  const principalText = identity ? identity.getPrincipal().toText() : null;
+  const displayId = principalText
+    ? `${principalText.slice(0, 8)}...${principalText.slice(-5)}`
+    : "Not signed in";
+
+  useEffect(() => {
+    const run = async () => {
+      try {
+        const p = identity?.getPrincipal();
+        if (!p) return;
+        const res = await (mainCanister as any).getPortfolio(p);
+        if (res && typeof res.total_usd_e8s !== "undefined") {
+          setTotalUsd(Number(res.total_usd_e8s) / 1e8);
+        }
+      } catch (e) {
+        console.error("Failed to load portfolio", e);
+      }
+    };
+    run();
+  }, [identity, mainCanister]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-white/[0.08]">
@@ -68,17 +93,20 @@ export function Navbar() {
               <Wallet className="w-4 h-4 text-text-muted" />
               <span className="body-small text-text-secondary">Balance:</span>
               <span className="body-regular font-semibold text-text-primary">
-                $30.00
+                {totalUsd === null ? "—" : `$${totalUsd.toFixed(2)}`}
               </span>
             </div>
 
             {/* Quick add button */}
-            <button className="btn-icon group">
+            <button
+              className="btn-icon group"
+              onClick={() => navigate("/deposit")}
+            >
               <Plus className="w-5 h-5 text-text-primary group-hover:scale-110 transition-transform" />
             </button>
 
             {/* Theme toggle */}
-            <ModeToggle />
+            {/* <ModeToggle /> */}
 
             {/* User menu */}
             <DropdownMenu>
@@ -91,7 +119,7 @@ export function Navbar() {
                 <div className="px-3 py-2">
                   <p className="body-small text-text-muted">Signed in as</p>
                   <p className="body-regular text-text-primary font-medium truncate">
-                    user@example.com
+                    {displayId}
                   </p>
                 </div>
                 <DropdownMenuSeparator className="bg-white/[0.08]" />
@@ -119,7 +147,15 @@ export function Navbar() {
 
                 <DropdownMenuSeparator className="bg-white/[0.08]" />
 
-                {isAuthenticated && (
+                {!isAuthenticated ? (
+                  <DropdownMenuItem
+                    onSelect={login}
+                    className="text-accent-mint hover:bg-accent-mint/10"
+                  >
+                    <User className="w-4 h-4 mr-2" />
+                    <span>Login</span>
+                  </DropdownMenuItem>
+                ) : (
                   <DropdownMenuItem
                     onSelect={logout}
                     className="text-semantic-negative hover:bg-semantic-negative/10"
