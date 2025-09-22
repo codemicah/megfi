@@ -8,9 +8,23 @@ import { useActors } from "@/hooks/useActors";
 import { useAuth } from "@/providers/auth-provider";
 import { useToast } from "@/hooks/use-toast";
 import { sanitizeDecimalInput, safeStringify } from "@/lib/utils";
+import { Actor } from "@dfinity/agent";
 import { Principal } from "@dfinity/principal";
 import { Principal as PrincipalType } from "@dfinity/principal";
 import { isAddress as isEvmAddress } from "ethers";
+
+const legacyWithdrawIdlFactory = ({
+  IDL,
+}: {
+  IDL: typeof import("@dfinity/candid").IDL;
+}) =>
+  IDL.Service({
+    withdrawCollateral: IDL.Func(
+      [IDL.Record({ amount: IDL.Nat })],
+      [IDL.Variant({ Ok: IDL.Nat, Err: IDL.Text })],
+      [],
+    ),
+  });
 
 export function WithdrawCollateral() {
   const [amount, setAmount] = useState("");
@@ -19,6 +33,32 @@ export function WithdrawCollateral() {
     useActors();
   const { identity } = useAuth();
   const { toast } = useToast();
+
+  const callWithdrawCollateral = async (amountNat: bigint) => {
+    const actor = mainCanister as any;
+    if (!actor) throw new Error("Main canister actor unavailable");
+    try {
+      return await actor.withdrawCollateral(amountNat);
+    } catch (err: any) {
+      const message = String(err?.message || "");
+      const isFieldHashError = message.includes("Cannot find field hash");
+      if (!isFieldHashError) {
+        throw err;
+      }
+
+      const agent = Actor.agentOf(actor);
+      const canisterId = Actor.canisterIdOf(actor);
+      if (!agent || !canisterId) {
+        throw err;
+      }
+
+      const legacyActor = Actor.createActor(legacyWithdrawIdlFactory as any, {
+        agent,
+        canisterId,
+      });
+      return await (legacyActor as any).withdrawCollateral({ amount: amountNat });
+    }
+  };
 
   const onWithdraw = async () => {
     if (!identity) {
@@ -41,7 +81,7 @@ export function WithdrawCollateral() {
 
     setLoading(true);
     try {
-      const res = await (mainCanister as any).withdrawCollateral(amt);
+      const res = await callWithdrawCollateral(amt);
       if ("Err" in res) {
         toast({ title: "Withdraw failed", description: String(res.Err) });
       } else {
